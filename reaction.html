@@ -12,12 +12,22 @@
 <body>
   <h2>Sainath reaction timer</h2>
   
+  <input type="text" id="textID"/>
+  <br/>
+  <br/>
+  <div class="flex-container" id="target">
+      <div class="cycler">row item 1</div>
+      <div class="cycler">row item 2</div>
+      <div class="cycler">row item 3</div>
+  </div>
+ 
 
-  <p id="target">Your time </p>
-  <p id="countdown">Count</p>
-  <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
-  <button type="button" class="btn btn-primary" onclick="recordReact()">React Now</button>
-  <p id="target"></p>
+  <p> Press the button to create an new element of type div and then add it to the container.
+  </p>
+  <button onclick="makeNewDiv()">Add value</button>
+  <button onclick="get()">Get</button>
+  <button onclick="spin()">Spin</button>
+
 
   <script>
       let myTime = undefined
