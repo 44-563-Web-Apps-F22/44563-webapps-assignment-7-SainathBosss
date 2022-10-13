@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Reaction timer</title>
+  <title>Reaction game</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -11,50 +11,40 @@
 </head>
 <body>
   <h2>Sainath reaction timer</h2>
-  
-  <input type="text" id="textID"/>
-  <br/>
-  <br/>
-  <div class="flex-container" id="target">
-      <div class="cycler">row item 1</div>
-      <div class="cycler">row item 2</div>
-      <div class="cycler">row item 3</div>
-  </div>
- 
+  <p id="target">Your time </p>
+  <p id="countdown">Count</p>
+  <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
+  <button type="button" class="btn btn-primary" onclick="recordReact()">React Now</button>
 
-  <p> Press the button to create an new element of type div and then add it to the container.
-  </p>
-  <button onclick="makeNewDiv()">Add value</button>
-  <button onclick="get()">Get</button>
-  <button onclick="spin()">Spin</button>
-
-
+  <p id="target"></p>
   <script>
-      let myTime = undefined
-      function recordReact() {
-          myTime = Date.now()
-          console.log(myTime)
+    let myTime = undefined
+
+    function recordReact() {
+      myTime = Date.now()
+      console.log(myTime)
+    }
+
+    function startTime() {
+      for (let index = 0; index < 4; index++) {
+        setTimeout(() => {
+          document.getElementById('countdown').innerHTML = index
+        }, (3 - index) * 1000)
+
       }
-      function startTime() {
-          for (let index = 0; index < 4; index++) {
-              setTimeout(() => {
-                  document.getElementById('countdown').innerHTML = index
-              }, (3 - index) * 1000)
+      
+      setTimeout(() => {
+        if (myTime == undefined) {
+          document.getElementById('target').innerHTML = "Too Slow"
 
-          }
+        } else {
+          let currentTime = Date.now()
+          let difference = Math.abs(currentTime - myTime)
+          document.getElementById('target').innerHTML = "Time was " + difference
+        }
 
-          setTimeout(() => {
-              if (myTime == undefined) {
-                  document.getElementById('target').innerHTML = "Too Slow"
-
-              } else {
-                  let currentTime = Date.now()
-                  let difference = Math.abs(currentTime - myTime)
-                  document.getElementById('target').innerHTML = "Time was " + difference
-              }
-
-          }, 3000)
-      }
+      }, 3000)
+    }
   </script>
 
 
